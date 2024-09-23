@@ -10,4 +10,8 @@ class MovieViewModel(private val getMoviesUseCase: GetMoviesUseCase) : ViewModel
         return getMoviesUseCase.invoke()
     }
 
+    fun itemSelected(movieId: String){
+        //TODO
+    }
+
 }
