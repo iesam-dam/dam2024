@@ -2,6 +2,8 @@ package edu.iesam.dam2024.features.movies.presentation
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.movies.domain.Movie
@@ -9,14 +11,36 @@ import edu.iesam.dam2024.features.movies.domain.Movie
 class MovieActivity : AppCompatActivity() {
 
     private val moviewFactory: MovieFactory = MovieFactory()
+    private val viewModel = moviewFactory.buildViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val viewModel = moviewFactory.buildViewModel()
         val movies = viewModel.viewCreated()
-        Log.d("@dev", movies.toString()) // Los visualizo
+        bindData(movies)
         viewModel.itemSelected(movies.first().id) //Simular un click sobre un item
+    }
+
+    private fun bindData(movies: List<Movie>) {
+        findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
+        findViewById<TextView>(R.id.movie_title_1).text = movies[0].title
+        findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
+            val movie1: Movie? = viewModel.itemSelected(movies[0].id)
+            movie1?.let {
+                Log.d("@dev", "Pelicula seleccionada: ${it.title}")
+            }
+        }
+
+        findViewById<TextView>(R.id.movie_id_2).text = movies[1].id
+        findViewById<TextView>(R.id.movie_title_2).text = movies[1].title
+
+        findViewById<TextView>(R.id.movie_id_3).text = movies[2].id
+        findViewById<TextView>(R.id.movie_title_3).text = movies[2].title
+
+        findViewById<TextView>(R.id.movie_id_4).text = movies[3].id
+        findViewById<TextView>(R.id.movie_title_4).text = movies[3].title
+
+
     }
 
 }

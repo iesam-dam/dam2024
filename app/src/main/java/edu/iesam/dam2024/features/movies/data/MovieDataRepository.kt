@@ -14,4 +14,8 @@ class MovieDataRepository(private val mockRemoteDataSource: MovieMockRemoteDataS
         return mockRemoteDataSource.getMovies()
     }
 
+    override fun getMovie(movieId: String): Movie? {
+        return mockRemoteDataSource.getMovie(movieId)
+    }
+
 }
