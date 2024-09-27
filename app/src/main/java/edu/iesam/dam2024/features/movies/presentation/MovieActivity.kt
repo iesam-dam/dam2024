@@ -52,7 +52,9 @@ class MovieActivity : AppCompatActivity() {
             xmlDataSource.save(it)
         }
 
-        val movieSaved = xmlDataSource.findMovie();
+        val movieSaved = xmlDataSource.find()
         Log.d("@dev", movieSaved.toString())
+
+        xmlDataSource.delete()
     }
 }
