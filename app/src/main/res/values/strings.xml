@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Dam2024</string>
+    <string name="name_file_xml">movies</string>
 </resources>
