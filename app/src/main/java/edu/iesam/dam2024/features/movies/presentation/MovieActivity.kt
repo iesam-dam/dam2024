@@ -26,6 +26,7 @@ class MovieActivity : AppCompatActivity() {
         viewModel.itemSelected(movies.first().id) //Simular un click sobre un item
         //testXml()
         testListXml()
+        testMovie()
     }
 
     private fun bindData(movies: List<Movie>) {
@@ -50,19 +51,6 @@ class MovieActivity : AppCompatActivity() {
 
     }
 
-    private fun testXml() {
-        val xmlDataSource = MovieXmlLocalDataSource(this)
-        val movie = viewModel.itemSelected("1")
-        movie?.let {
-            xmlDataSource.save(it)
-        }
-
-        val movieSaved = xmlDataSource.find()
-        Log.d("@dev", movieSaved.toString())
-
-        xmlDataSource.delete()
-    }
-
     private fun testListXml() {
         val movies = viewModel.viewCreated()
         val xmlDataSource = MovieXmlLocalDataSource(this)
@@ -70,5 +58,12 @@ class MovieActivity : AppCompatActivity() {
 
         val moviesFromXml = xmlDataSource.findAll()
         Log.d("@dev", moviesFromXml.toString())
+    }
+
+    private fun testMovie(){
+        viewModel.viewCreated()
+        val xmlDataSource = MovieXmlLocalDataSource(this)
+        val movie = xmlDataSource.findById("1")
+        Log.d("@dev", "$movie")
     }
 }
