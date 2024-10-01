@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.gson.serializer)
+    implementation(libs.glide)
 
     //Librerías para testing
     testImplementation(libs.junit)
