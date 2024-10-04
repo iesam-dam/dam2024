@@ -11,6 +11,7 @@ activity = "1.9.2"
 constraintlayout = "2.1.4"
 gson = "2.11.0"
 glide = "4.16.0"
+viewModelScope = "2.8.6"
 
 
 [libraries]
@@ -24,6 +25,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 gson-serializer = { group = "com.google.code.gson", name="gson", version.ref = "gson" }
 glide = { group = "com.github.bumptech.glide", name="glide", version.ref = "glide" }
+viewmodel-scope = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewModelScope" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

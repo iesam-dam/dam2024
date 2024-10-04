@@ -6,28 +6,48 @@ import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import edu.iesam.dam2024.R
+import edu.iesam.dam2024.app.domain.ErrorApp
 import edu.iesam.dam2024.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2024.features.movies.domain.Movie
 import edu.iesam.dam2024.features.movies.presentation.MovieDetailActivity.Companion.KEY_MOVIE_ID
+import java.lang.Error
 
 class MoviesActivity : AppCompatActivity() {
 
     private lateinit var movieFactory: MovieFactory
-    private lateinit var viewModel : MoviesViewModel
+    private lateinit var viewModel: MoviesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
-
         movieFactory = MovieFactory(this)
         viewModel = movieFactory.buildViewModel()
-
-        val movies = viewModel.viewCreated()
-        bindData(movies)
+        setupObserver()
+        viewModel.viewCreated()
     }
 
-    private fun bindData(movies: List<Movie>) {
+    private fun setupObserver() {
+        val movieObserver = Observer<MoviesViewModel.UiState> { uiState ->
+            uiState.movies?.let {
+                bindData(it)
+            }
+            uiState.errorApp?.let {
+                //pinto el error
+            }
+            if (uiState.isLoading) {
+                //muestro el cargando...
+                Log.d("@dev", "Cargando...")
+            } else {
+                //oculto el cargando...
+                Log.d("@dev"," Cargado ...")
+            }
+        }
+        viewModel.uiState.observe(this, movieObserver)
+    }
+
+    fun bindData(movies: List<Movie>) {
         findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
         findViewById<TextView>(R.id.movie_title_1).text = movies[0].title
         findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
@@ -53,7 +73,16 @@ class MoviesActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToMovieDetail(movieId: String){
+    private fun showError(error: ErrorApp){
+        when(error){
+            ErrorApp.DataErrorApp -> TODO()
+            ErrorApp.InternetErrorApp -> TODO()
+            ErrorApp.ServerErrorApp -> TODO()
+            ErrorApp.UnknowErrorApp -> TODO()
+        }
+    }
+
+    fun navigateToMovieDetail(movieId: String) {
         startActivity(MovieDetailActivity.getIntent(this, movieId))
     }
 }
