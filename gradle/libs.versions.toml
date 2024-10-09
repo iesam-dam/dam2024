@@ -10,6 +10,9 @@ material = "1.12.0"
 activity = "1.9.2"
 constraintlayout = "2.1.4"
 gson = "2.11.0"
+glide = "4.16.0"
+viewModelScope = "2.8.6"
+navigationComponent = "2.8.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -21,6 +24,10 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 gson-serializer = { group = "com.google.code.gson", name="gson", version.ref = "gson" }
+glide = { group = "com.github.bumptech.glide", name="glide", version.ref = "glide" }
+viewmodel-scope = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewModelScope" }
+nav-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationComponent" }
+nav-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationComponent" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
