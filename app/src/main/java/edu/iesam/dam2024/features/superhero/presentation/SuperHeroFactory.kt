@@ -10,8 +10,7 @@ class SuperHeroFactory {
     private val superHeroDataRepository = SuperHeroDataRepository(superHeroMockRemoteDataSource)
     private val getSuperHeroesUseCase = GetSuperHeroesUseCase(superHeroDataRepository)
 
-    fun buildViewModel(): SuperHeroViewModel {
-        return SuperHeroViewModel(getSuperHeroesUseCase)
+    fun getSuperHeroListViewModel(): SuperHeroListViewModel{
+        return SuperHeroListViewModel(getSuperHeroesUseCase)
     }
-
 }
