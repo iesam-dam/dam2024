@@ -18,6 +18,7 @@
         <activity
             android:name=".features.movies.presentation.MovieDetailActivity"
             android:exported="false" />
+
         <activity
             android:name=".features.superhero.presentation.SuperHeroActivity"
             android:exported="true">
@@ -28,11 +29,13 @@
             </intent-filter>
 
         </activity>
+
         <activity
             android:name=".features.movies.presentation.MoviesActivity"
             android:exported="true">
 
         </activity>
+
     </application>
 
 </manifest>
