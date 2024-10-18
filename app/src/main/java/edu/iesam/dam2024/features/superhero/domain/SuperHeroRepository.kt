@@ -1,5 +1,6 @@
 package edu.iesam.dam2024.features.superhero.domain
 
 interface SuperHeroRepository {
-    fun findAll(): List<SuperHero>
+    suspend fun findAll(): List<SuperHero>
+    suspend fun findById(superHeroId: String): SuperHero
 }
