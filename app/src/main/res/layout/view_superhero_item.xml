@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/TitleApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SuperHero" />
