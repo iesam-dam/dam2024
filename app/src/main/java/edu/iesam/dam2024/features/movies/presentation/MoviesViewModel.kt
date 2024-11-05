@@ -13,7 +13,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.android.annotation.KoinViewModel
 
+@KoinViewModel
 class MoviesViewModel(
     private val getMoviesUseCase: GetMoviesUseCase
 ) : ViewModel() {

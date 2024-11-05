@@ -1,10 +1,12 @@
 package edu.iesam.dam2024.features.movies.data.remote
 
 import edu.iesam.dam2024.features.movies.domain.Movie
+import org.koin.core.annotation.Single
 
 /**
  * Naming: Modelo + Tecnología + RemoteDataSource
  */
+@Single
 class MovieMockRemoteDataSource {
 
     private val movies = listOf(

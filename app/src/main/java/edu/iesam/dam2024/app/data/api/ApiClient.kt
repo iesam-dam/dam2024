@@ -21,8 +21,5 @@ object ApiClient {
             .build()
     }
 
-    fun provideSuperHeroService(): SuperHeroService {
-        return provideRetrofit().create(SuperHeroService::class.java)
-    }
 
 }

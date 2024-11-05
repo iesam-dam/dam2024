@@ -4,10 +4,12 @@ import edu.iesam.dam2024.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2024.features.movies.data.remote.MovieMockRemoteDataSource
 import edu.iesam.dam2024.features.movies.domain.Movie
 import edu.iesam.dam2024.features.movies.domain.MovieRepository
+import org.koin.core.annotation.Single
 
 /**
  * Naming: Modelo + DataRepository
  */
+@Single
 class MovieDataRepository(
     private val local: MovieXmlLocalDataSource,
     private val mockRemoteDataSource: MovieMockRemoteDataSource

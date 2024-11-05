@@ -5,20 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
-import edu.iesam.dam2024.R
 import edu.iesam.dam2024.app.domain.ErrorApp
 import edu.iesam.dam2024.databinding.FragmentMoviesBinding
 import edu.iesam.dam2024.features.movies.domain.Movie
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MoviesFragment : Fragment() {
 
-    private lateinit var movieFactory: MovieFactory
-    private lateinit var viewModel: MoviesViewModel
+    val viewModel: MoviesViewModel by viewModel()
 
     private var _binding: FragmentMoviesBinding? = null
     private val binding get() = _binding!!
@@ -35,8 +31,6 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObserver()
-        movieFactory = MovieFactory(requireContext())
-        viewModel = movieFactory.buildViewModel()
         viewModel.viewCreated()
     }
 
