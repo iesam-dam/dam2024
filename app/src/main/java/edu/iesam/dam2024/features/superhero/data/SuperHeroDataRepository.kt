@@ -7,7 +7,7 @@ import edu.iesam.dam2024.features.superhero.domain.SuperHeroRepository
 class SuperHeroDataRepository(private val remoteDataSource: SuperHeroApiRemoteDataSource) :
     SuperHeroRepository {
 
-    override suspend fun findAll(): List<SuperHero> {
+    override suspend fun findAll(): Result<List<SuperHero>> {
         return remoteDataSource.getSuperHeroes()
     }
 

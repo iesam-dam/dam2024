@@ -19,7 +19,11 @@ class SuperHeroListViewModel(private val getSuperHeroesUseCase: GetSuperHeroesUs
     fun loadSuperHeroes() {
         viewModelScope.launch(Dispatchers.IO) {
             val superHeroes = getSuperHeroesUseCase.invoke()
-            _uiState.postValue(UiState(superHeroes = superHeroes))
+            _uiState.postValue(
+                UiState(
+                    superHeroes = superHeroes.getOrNull(),
+                    errorApp = superHeroes.exceptionOrNull() as ErrorApp
+                ))
         }
     }
 
