@@ -1,10 +1,12 @@
 package edu.iesam.dam2024.features.superhero.presentation
 
-import edu.iesam.dam2024.app.data.api.ApiClient
+import edu.iesam.dam2024.app.data.local.db.SuperHeroDataBase
+import edu.iesam.dam2024.app.data.remote.api.ApiClient
 import edu.iesam.dam2024.features.superhero.data.SuperHeroDataRepository
 import edu.iesam.dam2024.features.superhero.data.remote.SuperHeroApiRemoteDataSource
 import edu.iesam.dam2024.features.superhero.data.remote.SuperHeroMockRemoteDataSource
 import edu.iesam.dam2024.features.superhero.data.remote.SuperHeroService
+import edu.iesam.dam2024.features.superhero.di.SuperHeroModule
 import edu.iesam.dam2024.features.superhero.domain.GetSuperHeroUseCase
 import edu.iesam.dam2024.features.superhero.domain.GetSuperHeroesUseCase
 
@@ -23,8 +25,7 @@ class SuperHeroFactory {
     }
 
     private fun getSuperHeroApiRemoteDataSource(): SuperHeroApiRemoteDataSource {
-        val superHeroService = ApiClient.provideSuperHeroService()
-        return SuperHeroApiRemoteDataSource(superHeroService)
+        return SuperHeroApiRemoteDataSource()
     }
 
     fun getSuperHeroDetailViewModel(): SuperHeroDetailViewModel {

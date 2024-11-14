@@ -1,4 +1,4 @@
-package edu.iesam.dam2024.app.data.api
+package edu.iesam.dam2024.app.data.remote.api
 
 import edu.iesam.dam2024.features.superhero.data.remote.SuperHeroService
 import retrofit2.Retrofit

@@ -64,9 +64,12 @@ dependencies {
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.koin.android)
     implementation(libs.koin.annotations)
-
-    //KSP
     ksp(libs.koin.ksp)
+
+    //Librería Room
+    implementation(libs.room.runtime)
+    ksp(libs.room.ksp)
+    implementation(libs.room.coroutines)
 
     //Librerías para testing
     testImplementation(libs.junit)
