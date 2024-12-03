@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import edu.iesam.dam2024.app.presentation.hide
+import edu.iesam.dam2024.app.presentation.views.ErrorAppUIFactory
 import edu.iesam.dam2024.databinding.FragmentMoviesBinding
 import edu.iesam.dam2024.databinding.FragmentSuperheroListBinding
 import edu.iesam.dam2024.features.superhero.domain.SuperHero
@@ -18,6 +20,9 @@ class SuperHeroListFragment : Fragment() {
 
     private lateinit var factory: SuperHeroFactory
     private lateinit var viewModel: SuperHeroListViewModel
+
+    //
+    //var errorFactory : ErrorAppUIFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,8 +50,11 @@ class SuperHeroListFragment : Fragment() {
 
             uiState.errorApp?.let {
                 //Pinto el error
+                val error = ErrorAppUIFactory(requireContext())
+                val errorAppUI = error.build(it)
+                binding.errorApp.render(errorAppUI)
             } ?: run {
-                //Ocultar el error
+                binding.errorApp.hide()
             }
 
             if (uiState.isLoading){

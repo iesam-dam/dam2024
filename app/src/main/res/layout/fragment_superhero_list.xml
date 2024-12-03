@@ -20,4 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <edu.iesam.dam2024.app.presentation.views.ErrorAppView
+        android:id="@+id/error_app"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>
