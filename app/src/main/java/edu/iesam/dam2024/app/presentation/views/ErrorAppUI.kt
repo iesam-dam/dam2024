@@ -7,7 +7,7 @@ interface ErrorAppUI {
     fun getImageError(): Int
     fun getTitleError(): String
     fun getDescriptionError(): String
-    fun getActionRetry() : Unit
+    fun getActionRetry(action: (() -> Unit)?)
 }
 
 class ServerErrorAppUI(val context: Context): ErrorAppUI{
@@ -23,11 +23,9 @@ class ServerErrorAppUI(val context: Context): ErrorAppUI{
         return context.getString(R.string.description_error_server)
     }
 
-    override fun getActionRetry() {
-        TODO("Not yet implemented")
+    override fun getActionRetry(action: (() -> Unit)?) {
+        action?.invoke()
     }
-
-
 }
 
 class ConnectionErrorAppUI(val context: Context): ErrorAppUI{
@@ -43,8 +41,8 @@ class ConnectionErrorAppUI(val context: Context): ErrorAppUI{
         return context.getString(R.string.description_error_server)
     }
 
-    override fun getActionRetry() {
-        TODO("Not yet implemented")
+    override fun getActionRetry(action: (() -> Unit)?) {
+        action?.invoke()
     }
 
 
@@ -63,8 +61,8 @@ class UnknownErrorAppUI(val context: Context): ErrorAppUI{
         return context.getString(R.string.description_error_server)
     }
 
-    override fun getActionRetry() {
-        TODO("Not yet implemented")
+    override fun getActionRetry(action: (() -> Unit)?) {
+        action?.invoke()
     }
 
 

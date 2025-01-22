@@ -13,7 +13,7 @@ suspend fun <T : Any> apiCall(call: suspend () -> Response<T>): Result<T> {
     } catch (exception: Throwable) {
         return when (exception) {
             is ConnectException -> Result.failure(ErrorApp.InternetErrorApp)
-            is UnknownHostException -> Result.failure(ErrorApp.ServerErrorApp)
+            is UnknownHostException -> Result.failure(ErrorApp.InternetErrorApp)
             is SocketTimeoutException -> Result.failure(ErrorApp.InternetErrorApp)
             else -> Result.failure(ErrorApp.UnknowErrorApp)
         }

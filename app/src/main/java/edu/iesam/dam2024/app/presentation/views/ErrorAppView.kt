@@ -24,7 +24,6 @@ class ErrorAppView @JvmOverloads constructor(
         binding.imgError.setImageResource(errorAppUI.getImageError())
         binding.titleError.text = errorAppUI.getTitleError()
         binding.titleDescription.text = errorAppUI.getDescriptionError()
-        //action ..
         visible()
     }
 
